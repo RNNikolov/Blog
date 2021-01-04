@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5" style="font-family: Montserrat">
         <div class="currency">
-            <h3 class="text-center"><i class="fas fa-exchange-alt mr-2"></i>Exchange rates</h3>
+            <h2 class="text-center"><i class="fas fa-exchange-alt mr-2"></i>Exchange rates</h2>
             <div class="row justify-content-center mt-5">
 
                 <select id="from_currency" class="custom-select col-1"></select>
@@ -34,14 +34,13 @@
             var rateEl = $('#rate');
             var exchange = $('#exchange');
 
-            //upon on typing the amount you want to change, it immediately calculates for you the sum based on the
-            //current rates
+
             from_currencyEl.on('change', calculate);
             from_amountEl.on('input', calculate);
             to_currencyEl.on('change', calculate);
             to_amountEl.on('input', calculate);
 
-            //by clicking the switch button, it swaps the two chosen currencies
+
             exchange.on('click', function () {
                 let tmp = from_currencyEl.val();
                 from_currencyEl.val(to_currencyEl.val());
@@ -49,7 +48,7 @@
                 calculate();
             });
 
-            //loads the current currencies names as possible options for the select box
+
             function initCurrencies() {
                 $.each(rates, function (code, rates) {
                     from_currencyEl.append('<option value="' + code + '">' + code + '</option>');
@@ -59,8 +58,6 @@
 
             initCurrencies();
 
-            //calculates the amount a user wants to exchange based on the current rates and fixes the
-            // final amount to 2 numbers after the floating point
             function calculate() {
                 let from_currency = from_currencyEl.val();
                 let to_currency = to_currencyEl.val();
